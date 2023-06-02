@@ -6,4 +6,23 @@ Speerstudios ist ein kollektiv aus Künstlern, welche ihre Kunstwerke an den mei
 
 Ausserdem ist es auch möglich exklusive Kunst zu erwerben, die noch nicht veröffentlicht wurde. Das heisst bei dieser Variante entscheiden sich die Kund*innen für eine Überraschung.
 
-## 
+## Wireframe
+
+### Landing Page
+
+![Landing Page](./Landing_Page.png)
+
+### Offerings
+
+![Offerings](./Offerings.png)
+
+### About Us
+
+![About Us](./About_Us.png)
+
+### Contact
+
+![Contact](./Contact.png)
+
+## Konzept
+

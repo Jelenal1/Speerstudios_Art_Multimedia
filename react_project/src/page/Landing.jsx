@@ -8,7 +8,7 @@ import { useEffect } from "react";
 function Landing() {
   const style = {
     paragraphsaying: `bg-gray-300 h-14 flex justify-center items-center font-main text-2xl`,
-    pwrapper: `h-96 my-20 flex flex-col justify-center border border-red-500`,
+    pwrapper: `h-96 my-40 flex flex-col justify-center`,
   };
   const backgrounds = [bglanding, bglanding2, bglanding3];
   const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
@@ -17,7 +17,7 @@ function Landing() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const sectionHeight = document.documentElement.scrollHeight;
+      const sectionHeight = document.documentElement.scrollHeight - 200;
 
       const maxIndex = backgrounds.length - 1;
       const index = Math.floor(

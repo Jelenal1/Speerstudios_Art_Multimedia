@@ -6,7 +6,7 @@ function Navbar() {
   };
 
   return (
-    <div className="bg-gray-300 flex items-center font-main h-14">
+    <div className="bg-gray-300 flex items-center font-main h-14 fixed w-full">
       <div className="flex items-center ml-1">
         <img src={logo} className="h-10" />
         <h1 className="text-3xl">SpeerStudios</h1>

@@ -1,9 +1,9 @@
-import Navbar from "./components/Navbar";
+import Landing from "./page/landing";
 
 function App() {
   return (
     <>
-      <Navbar />
+      <Landing />
     </>
   );
 }

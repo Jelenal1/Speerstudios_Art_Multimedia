@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import bglanding from "../img/Landingbg.jpg";
 import bglanding2 from "../img/Landingbg2.jpg";
@@ -69,6 +70,7 @@ function Landing() {
           <span className="text-3xl ml-2">Us</span>
         </p>
       </div>
+      <Footer />
     </>
   );
 }

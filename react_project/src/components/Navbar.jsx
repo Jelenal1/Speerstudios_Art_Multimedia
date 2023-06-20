@@ -13,7 +13,7 @@ function Navbar() {
         <img src={logo} className="h-10" />
         <h1 className="text-3xl">SpeerStudios</h1>
       </div>
-      <button className={style.button} onClick={navigate("/")}>Home</button>
+      <button className={style.button} onClick={() => navigate("/")}>Home</button>
       <button className={style.button}>Offerings</button>
       <button className={style.button}>About Us</button>
       <button className={style.button}>Contact</button>

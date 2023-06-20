@@ -2,7 +2,7 @@ import logo from "../img/Logo.png";
 
 function Footer() {
   const style = {
-    linkbutton: "border-2 w-32 text-center",
+    linkbutton: "w-32 text-center hover:underline hover:text-[#F18CED]",
   };
   return (
     <div className="bg-gray-300 flex flex-col items-center">
@@ -22,7 +22,7 @@ function Footer() {
       <a href="" className={style.linkbutton}>
         Privacy Policy
       </a>
-      <span>© SpeerStudios Maintainde by Jelena Speer</span>
+      <span className="my-2">© SpeerStudios Maintainde by Jelena Speer</span>
     </div>
   );
 }

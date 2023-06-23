@@ -7,7 +7,9 @@ function Navbar() {
   const style = {
     buttonLg: `mx-10 text-xl bg-[#F18CED] h-fit rounded-lg w-24 hidden lg:block`,
     buttonSm: `text-xl bg-[#F18CED] h-fit rounded-lg w-24 block lg:hidden my-10`,
-    wrapperSm: `flex flex-col items-center bg-gray-300 fixed top-0 right-0 w-32 h-full`
+    open: `flex flex-col items-center bg-gray-300 fixed top-0 right-0 w-32 h-full transition-all duration-300`,
+    closed: `flex flex-col items-center bg-gray-300 fixed top-0 -right-20 w-32 h-full transition-all duration-300`,
+
   };
 
   const [open, setOpen] = useState(false);
@@ -33,8 +35,8 @@ function Navbar() {
         <button className={style.buttonLg}>About Us</button>
         <button className={style.buttonLg}>Contact</button>
       </div>
-      <button className="ml-auto mr-3" onClick={handleOpen} ><AiOutlineMenu className="w-8 h-8" /></button>
-      <div className={open ? style.wrapperSm : "hidden"}>
+      <button className="ml-auto mr-3 lg:hidden" onClick={handleOpen} ><AiOutlineMenu className="w-8 h-8" /></button>
+      <div className={open ? style.open : style.closed + " -right-44"}>
         <button className="text-3xl mt-10" onClick={() => handleClose()}><AiOutlineClose /></button>
         <button className={style.buttonSm} onClick={() => navigate("/")}>Home</button>
         <button className={style.buttonSm} onClick={() => navigate("/offerings")}>Offerings</button>

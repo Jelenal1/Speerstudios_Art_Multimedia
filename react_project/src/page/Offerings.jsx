@@ -1,17 +1,23 @@
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import { db } from "../firebase";
-import { getCollection } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function Offerings() {
   const [offeringsdata, setOfferingsData] = useState([]);
 
   const getOfferings = async () => {
-    const data = await getCollection(db, "offerings");
-    setOfferingsData(data);
+    const data = await getDocs(collection(db, "offerings"));
+    const alldocs = [];
+    data.forEach((doc) => {
+      alldocs.push({ ...doc.data(), id: doc.id });
+    });
+    setOfferingsData(alldocs);
   };
 
   useEffect(() => {
     getOfferings();
+    console.log(offeringsdata);
   }, []);
 
   return (

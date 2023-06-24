@@ -7,17 +7,21 @@ export default function Offerings() {
   const [offeringsdata, setOfferingsData] = useState([]);
 
   const getOfferings = async () => {
-    const data = await getDocs(collection(db, "offerings"));
-    const alldocs = [];
-    data.forEach((doc) => {
-      alldocs.push({ ...doc.data(), id: doc.id });
-    });
-    setOfferingsData(alldocs);
+    try {
+      const querySnapshot = await getDocs(collection(db, "offerings"));
+      console.log("querySnapshot:", querySnapshot);
+      const alldocs = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setOfferingsData(alldocs);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
     getOfferings();
-    console.log(offeringsdata);
   }, []);
 
   return (

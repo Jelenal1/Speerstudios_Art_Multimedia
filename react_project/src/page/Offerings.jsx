@@ -29,6 +29,16 @@ export default function Offerings() {
       <Navbar />
       <div className="flex flex-col min-h-screen items-center">
         <h1 className="text-3xl">Offerings</h1>
+        {offeringsdata.map((item) => {
+          return (
+            <div key={item.id}>
+              {item.imagenames.map((imagename, index) => (
+                <img src={imagename} key={index} />
+              ))}
+              <h2 key={item.id}>{item.title}</h2>
+            </div>
+          );
+        })}
       </div>
     </>
   );

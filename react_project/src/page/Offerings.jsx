@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import Image from "../components/Image.jsx";
 
 export default function Offerings() {
   const [offeringsdata, setOfferingsData] = useState([]);
@@ -32,10 +33,10 @@ export default function Offerings() {
         {offeringsdata.map((item) => {
           return (
             <div key={item.id}>
-              {item.imagenames.map((imagename, index) => (
-                <img src={imagename} key={index} />
-              ))}
               <h2 key={item.id}>{item.title}</h2>
+              {item.imagenames.map((image) => {
+                return <Image key={image} imagename={image} />;
+              })}
             </div>
           );
         })}

@@ -43,28 +43,27 @@ export default function Offerings() {
                 {item.title}
               </h2>
               <Carousel
-                className=" border-2 w-[800px] h-[605px]"
+                className=" border-2 w-[800px] h-[604px] rounded-lg"
                 prevArrow={({ handlePrev }) => (
                   <IconButton
                     variant="text"
                     color="gray"
-                    size="lg"
+                    size="md"
                     onClick={handlePrev}
-                    className="!absolute top-2/4 -translate-y-2/4 left-4"
+                    className="!absolute top-2/4 -translate-y-2/4 left-4 rounded-full"
                   >
-                    <AiOutlineLeft className="w-10 h-10 " />
+                    <AiOutlineLeft className="w-10 h-10 bg-gray-300 rounded-full" />
                   </IconButton>
                 )}
                 nextArrow={({ handleNext }) => (
                   <IconButton
                     variant="text"
                     color="gray"
-                    size="lg"
+                    size="md"
                     onClick={handleNext}
-                    className="!absolute top-2/4 -translate-y-2/4 !right-4"
+                    className="!absolute top-2/4 -translate-y-2/4 !right-4 rounded-full"
                   >
-                    {" "}
-                    <AiOutlineRight className="w-10 h-10" />
+                    <AiOutlineRight className="w-10 h-10 bg-gray-300 rounded-full" />
                   </IconButton>
                 )}
               >

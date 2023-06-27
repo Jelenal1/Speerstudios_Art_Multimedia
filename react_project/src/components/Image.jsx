@@ -15,7 +15,5 @@ export default function Image({ imagename }) {
   useEffect(() => {
     getImageURL();
   });
-  return (
-    <img src={url} className="object-contain" />
-  );
+  return <img src={url} className="object-contain h-[600px]" />;
 }

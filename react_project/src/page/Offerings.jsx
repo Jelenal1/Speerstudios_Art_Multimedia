@@ -38,12 +38,15 @@ export default function Offerings() {
         <h1 className="text-3xl">Offerings</h1>
         {offeringsdata.map((item) => {
           return (
-            <div key={item.id} className="flex flex-col items-center mt-5">
+            <div
+              key={item.id}
+              className="flex flex-col max-w-full items-center mt-5"
+            >
               <h2 key={item.id} className="text-2xl">
                 {item.title}
               </h2>
               <Carousel
-                className=" border-2 w-[800px] h-[604px] rounded-lg"
+                className=" border-2 md:w-[800px] w-full h-[604px] rounded-lg"
                 prevArrow={({ handlePrev }) => (
                   <IconButton
                     variant="text"
@@ -69,10 +72,7 @@ export default function Offerings() {
               >
                 {item.imagenames.map((image) => {
                   return (
-                    <div
-                      key={image}
-                      className="flex justify-center w-[800px] h-[600px]"
-                    >
+                    <div key={image} className="flex w-fit mx-auto">
                       <Image imagename={image} />
                     </div>
                   );

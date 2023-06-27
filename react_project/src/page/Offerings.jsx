@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar.jsx";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import { collection, getDocs } from "firebase/firestore";
 import Image from "../components/Image.jsx";
 import { Carousel, IconButton } from "@material-tailwind/react";
@@ -8,6 +9,15 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 export default function Offerings() {
   const [offeringsdata, setOfferingsData] = useState([]);
+  const [loggedIn, setLoggedIn] = useState();
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setLoggedIn(true);
+      return;
+    }
+    setLoggedIn(false);
+  });
 
   const getOfferings = async () => {
     try {
@@ -37,14 +47,27 @@ export default function Offerings() {
       <Navbar />
       <div className="flex flex-col min-h-screen items-center font-main">
         <h1 className="text-3xl">Offerings</h1>
-        <form className="flex flex-col mt-2">
-          <label htmlFor="title">Title</label>
-          <input type="text" name="title" className={style.input} />
-          <label htmlFor="price">Price</label>
-          <input type="number" name="price" step="10" className={style.input} />
-          <label htmlFor="image">Image</label>
-          <input type="file" name="image" className={style.input} />
-        </form>
+        {loggedIn ? (
+          <form className="flex flex-col mt-2">
+            <label htmlFor="title">Title</label>
+            <input type="text" name="title" className={style.input} />
+            <label htmlFor="price">Price</label>
+            <input
+              type="number"
+              name="price"
+              step="10"
+              className={style.input}
+            />
+            <label htmlFor="image">Image</label>
+            <input
+              type="file"
+              name="image"
+              accept="image/*"
+              multiple="multiple"
+              className={style.input}
+            />
+          </form>
+        ) : null}
         {offeringsdata.map((item) => {
           return (
             <div

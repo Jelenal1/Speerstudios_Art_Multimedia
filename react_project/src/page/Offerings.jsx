@@ -74,12 +74,13 @@ export default function Offerings() {
   const style = {
     button: "text-xl bg-[#F18CED] h-fit rounded-lg w-24",
     input: "border-2 rounded-lg",
+    maincontainer: "flex flex-col min-h-screen items-center font-main",
   };
 
   return (
     <>
       <Navbar />
-      <div className="flex flex-col min-h-screen items-center font-main">
+      <div className={style.maincontainer}>
         <h1 className="text-3xl mt-2">Offerings</h1>
         {loggedIn ? (
           <>

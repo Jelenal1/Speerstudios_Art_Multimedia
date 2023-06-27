@@ -39,32 +39,44 @@ export default function Offerings() {
         {offeringsdata.map((item) => {
           return (
             <div key={item.id} className="flex flex-col items-center mt-5">
-              <h2 key={item.id} className="text-2xl">{item.title}</h2>
-              <Carousel className=" border-2 w-[800px] h-[605px]"
-                prevArrow={({ handlePrev }) => (<IconButton
-                  variant="text"
-                  color="gray"
-                  size="lg"
-                  onClick={handlePrev}
-                  className="!absolute top-2/4 -translate-y-2/4 left-4"
-                >
-                  <AiOutlineLeft className="w-10 h-10" />
-                </IconButton>)}
-                nextArrow={({ handleNext }) => (<IconButton
-                  variant="text"
-                  color="gray"
-                  size="lg"
-                  onClick={handleNext}
-                  className="!absolute top-2/4 -translate-y-2/4 !right-4"
-                > <AiOutlineRight className="w-10 h-10" />
-                </IconButton>)}
+              <h2 key={item.id} className="text-2xl">
+                {item.title}
+              </h2>
+              <Carousel
+                className=" border-2 w-[800px] h-[605px]"
+                prevArrow={({ handlePrev }) => (
+                  <IconButton
+                    variant="text"
+                    color="gray"
+                    size="lg"
+                    onClick={handlePrev}
+                    className="!absolute top-2/4 -translate-y-2/4 left-4"
+                  >
+                    <AiOutlineLeft className="w-10 h-10 " />
+                  </IconButton>
+                )}
+                nextArrow={({ handleNext }) => (
+                  <IconButton
+                    variant="text"
+                    color="gray"
+                    size="lg"
+                    onClick={handleNext}
+                    className="!absolute top-2/4 -translate-y-2/4 !right-4"
+                  >
+                    {" "}
+                    <AiOutlineRight className="w-10 h-10" />
+                  </IconButton>
+                )}
               >
                 {item.imagenames.map((image) => {
                   return (
-                    <div key={image} className="flex justify-center w-[800px] h-[600px]">
+                    <div
+                      key={image}
+                      className="flex justify-center w-[800px] h-[600px]"
+                    >
                       <Image imagename={image} />
                     </div>
-                  )
+                  );
                 })}
               </Carousel>
               <h2 className="text-2xl">{item.price + " CHF"}</h2>

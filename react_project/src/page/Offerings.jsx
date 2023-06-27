@@ -32,10 +32,14 @@ export default function Offerings() {
         <h1 className="text-3xl">Offerings</h1>
         {offeringsdata.map((item) => {
           return (
-            <div key={item.id}>
-              <h2 key={item.id}>{item.title}</h2>
+            <div key={item.id} className="flex flex-col items-center mt-10">
+              <h2 key={item.id} className="text-2xl">{item.title}</h2>
               {item.imagenames.map((image) => {
-                return <Image key={image} imagename={image} />;
+                return (
+                  <div className="flex justify-center aspect-square w-1/3 border-2" key={image}>
+                    <Image imagename={image} />
+                  </div>
+                )
               })}
             </div>
           );

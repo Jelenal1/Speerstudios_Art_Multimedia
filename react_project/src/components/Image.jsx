@@ -16,8 +16,6 @@ export default function Image({ imagename }) {
     getImageURL();
   });
   return (
-    <div>
-      <img src={url} />
-    </div>
+    <img src={url} className="object-contain" />
   );
 }

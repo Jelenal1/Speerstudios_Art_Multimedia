@@ -80,9 +80,12 @@ export default function Offerings() {
     <>
       <Navbar />
       <div className="flex flex-col min-h-screen items-center font-main">
-        <h1 className="text-3xl">Offerings</h1>
+        <h1 className="text-3xl mt-2">Offerings</h1>
         {loggedIn ? (
           <>
+            <button className={style.button} onClick={() => auth.signOut()}>
+              Logout
+            </button>
             <form
               className="flex flex-col mt-2"
               onSubmit={(e) => {
@@ -161,7 +164,9 @@ export default function Offerings() {
           );
         })}
       </div>
-      <Footer />
+      <div className="mt-10">
+        <Footer />
+      </div>
     </>
   );
 }

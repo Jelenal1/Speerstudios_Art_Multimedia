@@ -28,7 +28,6 @@ export default function Offerings() {
   const getOfferings = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "offerings"));
-      console.log("querySnapshot:", querySnapshot);
       const alldocs = querySnapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
@@ -51,7 +50,14 @@ export default function Offerings() {
 
   const uploadImages = async (e) => {
     const files = e.target[2].files;
-    console.log(files);
+
+    if (
+      files.length === 0 ||
+      e.target[0].value === "" ||
+      e.target[1].value === ""
+    )
+      return;
+
     const imagenames = [];
 
     for (let i = 0; i < files.length; i++) {

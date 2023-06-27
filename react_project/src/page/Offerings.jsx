@@ -74,7 +74,7 @@ export default function Offerings() {
       );
     });
 
-    await uploadOfferings();
+    await uploadOfferings(e.target[0].value, e.target[1].value, [], urls);
   };
 
   useEffect(() => {

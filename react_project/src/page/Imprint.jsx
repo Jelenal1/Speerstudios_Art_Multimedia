@@ -5,7 +5,7 @@ export default function Imprint() {
   const style = {
     maincontainer: "flex flex-col min-h-screen items-center font-main",
     button: "text-xl bg-[#F18CED] h-fit rounded-lg w-24",
-    paragraphsaying: `bg-gray-300 h-60 p-2 my-10 w-full flex flex-col items-center justify-center text-center font-main text-2xl`,
+    paragraphsaying: `bg-gray-300 p-2 mt-40 w-full flex flex-col items-center justify-center text-center font-main text-2xl`,
   };
 
   return (
@@ -21,6 +21,7 @@ export default function Imprint() {
             Lugano, Switzerland, are entirely fictional. <br />
             Any resemblance to real entities, living or dead, or actual events
             is purely coincidental.
+            <br />
             <br />
             SpeerStudios <br />
             Via Monte Bre 10 <br />

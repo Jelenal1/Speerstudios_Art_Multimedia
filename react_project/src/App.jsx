@@ -7,6 +7,7 @@ import About from "./page/About";
 import Contact from "./page/Contact";
 import Imprint from "./page/Imprint";
 import Terms from "./page/Terms";
+import Privacy from "./page/Privacy";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/imprint" element={<Imprint />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
 
         <Route
           path="/*"

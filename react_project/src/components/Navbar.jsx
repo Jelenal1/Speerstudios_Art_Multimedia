@@ -32,16 +32,16 @@ function Navbar() {
       <div className="flex">
         <button className={style.buttonLg} onClick={() => navigate("/")}>Home</button>
         <button className={style.buttonLg} onClick={() => navigate("/offerings")}>Offerings</button>
-        <button className={style.buttonLg}>About Us</button>
-        <button className={style.buttonLg}>Contact</button>
+        <button className={style.buttonLg} onClick={() => navigate("/about")}>About Us</button>
+        <button className={style.buttonLg} onClick={() => navigate("/contact")}>Contact</button>
       </div>
       <button className="ml-auto mr-3 lg:hidden" onClick={handleOpen} ><AiOutlineMenu className="w-8 h-8" /></button>
       <div className={open ? style.open : style.closed + " -right-44"}>
         <button className="text-3xl mt-10" onClick={() => handleClose()}><AiOutlineClose /></button>
         <button className={style.buttonSm} onClick={() => navigate("/")}>Home</button>
         <button className={style.buttonSm} onClick={() => navigate("/offerings")}>Offerings</button>
-        <button className={style.buttonSm}>About Us</button>
-        <button className={style.buttonSm}>Contact</button>
+        <button className={style.buttonSm} onClick={() => navigate("/about")}>About Us</button>
+        <button className={style.buttonSm} onClick={() => navigate("/contact")}>Contact</button>
       </div>
     </div>
   );

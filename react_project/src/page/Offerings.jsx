@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar.jsx";
-import { auth, db } from "../firebase";
+import { auth, db, storage } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { addDoc, collection, doc, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import Image from "../components/Image.jsx";
 import { Carousel, IconButton } from "@material-tailwind/react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import { getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
 
 export default function Offerings() {
   const [offeringsdata, setOfferingsData] = useState([]);
   const [loggedIn, setLoggedIn] = useState();
-  const [progress, setProgress] = useState(0);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -35,46 +39,30 @@ export default function Offerings() {
     }
   };
 
-  const uploadOfferings = async (title, price, imagenames, imageurls) => {
-    const newOffering = await addDoc(doc(db, "offerings"), {
+  const uploadOfferings = async (title, price, imagenames) => {
+    const newOffering = await addDoc(collection(db, "offerings"), {
       title: title,
       price: price,
       imagenames: imagenames,
-      imageurls: imageurls,
     });
 
-    setOfferingsData([
-      ...offeringsdata,
-      { ...newOffering.data(), id: newOffering.id },
-    ]);
+    getOfferings();
   };
 
   const uploadImages = async (e) => {
     const files = e.target[2].files;
-    const urls = [];
+    console.log(files);
+    const imagenames = [];
 
-    files.forEach(async (file) => {
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
       const storageRef = ref(storage, `offerings/${file.name}`);
-      uploadBytesResumable(storageRef, file).on(
-        "state_changed",
-        (snapshot) => {
-          const progress = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          setProgress(progress);
-        },
-        (error) => {
-          alert(error);
-        },
-        () => {
-          getDownloadURL(storageRef).then((downloadURL) => {
-            urls.push(downloadURL);
-          });
-        }
-      );
-    });
+      console.log(storageRef);
+      await uploadBytes(storageRef, file);
+      imagenames.push(file.name);
+    }
 
-    await uploadOfferings(e.target[0].value, e.target[1].value, [], urls);
+    await uploadOfferings(e.target[0].value, e.target[1].value, imagenames);
   };
 
   useEffect(() => {
@@ -92,25 +80,36 @@ export default function Offerings() {
       <div className="flex flex-col min-h-screen items-center font-main">
         <h1 className="text-3xl">Offerings</h1>
         {loggedIn ? (
-          <form className="flex flex-col mt-2">
-            <label htmlFor="title">Title</label>
-            <input type="text" name="title" className={style.input} />
-            <label htmlFor="price">Price</label>
-            <input
-              type="number"
-              name="price"
-              step="10"
-              className={style.input}
-            />
-            <label htmlFor="image">Image</label>
-            <input
-              type="file"
-              name="image"
-              accept="image/*"
-              multiple="multiple"
-              className={style.input}
-            />
-          </form>
+          <>
+            <form
+              className="flex flex-col mt-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                uploadImages(e);
+              }}
+            >
+              <label htmlFor="title">Title</label>
+              <input type="text" name="title" className={style.input} />
+              <label htmlFor="price">Price</label>
+              <input
+                type="number"
+                name="price"
+                step="10"
+                className={style.input}
+              />
+              <label htmlFor="image">Image</label>
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                multiple="multiple"
+                className={style.input}
+              />
+              <button type="submit" className={style.button}>
+                Upload
+              </button>
+            </form>
+          </>
         ) : null}
         {offeringsdata.map((item) => {
           return (

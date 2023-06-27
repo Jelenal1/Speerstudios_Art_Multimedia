@@ -4,6 +4,7 @@ import Offerings from "./page/Offerings";
 import Navbar from "./components/Navbar";
 import Login from "./page/Login";
 import About from "./page/About";
+import Contact from "./page/Contact";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/offerings" element={<Offerings />} />
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route
           path="/*"
           element={

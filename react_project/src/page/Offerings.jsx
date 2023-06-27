@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import { auth, db } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs } from "firebase/firestore";
 import Image from "../components/Image.jsx";
 import { Carousel, IconButton } from "@material-tailwind/react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 export default function Offerings() {
   const [offeringsdata, setOfferingsData] = useState([]);
   const [loggedIn, setLoggedIn] = useState();
+  const [progress, setProgress] = useState(0);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -31,6 +33,48 @@ export default function Offerings() {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const uploadOfferings = async (title, price, imagenames, imageurls) => {
+    const newOffering = await addDoc(doc(db, "offerings"), {
+      title: title,
+      price: price,
+      imagenames: imagenames,
+      imageurls: imageurls,
+    });
+
+    setOfferingsData([
+      ...offeringsdata,
+      { ...newOffering.data(), id: newOffering.id },
+    ]);
+  };
+
+  const uploadImages = async (e) => {
+    const files = e.target[2].files;
+    const urls = [];
+
+    files.forEach(async (file) => {
+      const storageRef = ref(storage, `offerings/${file.name}`);
+      uploadBytesResumable(storageRef, file).on(
+        "state_changed",
+        (snapshot) => {
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progress);
+        },
+        (error) => {
+          alert(error);
+        },
+        () => {
+          getDownloadURL(storageRef).then((downloadURL) => {
+            urls.push(downloadURL);
+          });
+        }
+      );
+    });
+
+    await uploadOfferings();
   };
 
   useEffect(() => {

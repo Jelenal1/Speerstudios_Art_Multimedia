@@ -117,7 +117,7 @@ export default function Offerings() {
           return (
             <div
               key={item.id}
-              className="flex flex-col max-w-full items-center mt-5"
+              className="flex flex-col max-w-full items-center my-10"
             >
               <h2 key={item.id} className="text-2xl">
                 {item.title}

@@ -1,10 +1,11 @@
 import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
 
 export default function About() {
   const style = {
     maincontainer: "flex flex-col min-h-screen items-center font-main",
     button: "text-xl bg-[#F18CED] h-fit rounded-lg w-24",
-    paragraphsaying: `bg-gray-300 p-2 my-10 w-full flex flex-col items-center text-center font-main text-2xl`,
+    paragraphsaying: `bg-gray-300 h-60 p-2 my-10 w-full flex flex-col items-center justify-center text-center font-main text-2xl`,
   };
 
   return (
@@ -43,6 +44,7 @@ export default function About() {
           </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

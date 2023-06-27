@@ -6,12 +6,8 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import Image from "../components/Image.jsx";
 import { Carousel, IconButton } from "@material-tailwind/react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytes,
-  uploadBytesResumable,
-} from "firebase/storage";
+import { ref, uploadBytes } from "firebase/storage";
+import Footer from "../components/Footer.jsx";
 
 export default function Offerings() {
   const [offeringsdata, setOfferingsData] = useState([]);
@@ -39,7 +35,7 @@ export default function Offerings() {
   };
 
   const uploadOfferings = async (title, price, imagenames) => {
-    const newOffering = await addDoc(collection(db, "offerings"), {
+    await addDoc(collection(db, "offerings"), {
       title: title,
       price: price,
       imagenames: imagenames,
@@ -165,6 +161,7 @@ export default function Offerings() {
           );
         })}
       </div>
+      <Footer />
     </>
   );
 }

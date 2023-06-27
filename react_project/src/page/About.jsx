@@ -29,11 +29,17 @@ export default function About() {
           <p>
             We are a variety of artists. We are not interested in being famous
             or publicly known. <br />
-            We just want to make our art and support others to make art too.{" "}
-            <br />
+            We just want to make our art and support others to make art too.<br />
             We are not looking for profit, we just want enough money for food
             and more art. <br />
             This is not just a cheesy catch phrase. We live art. <br />
+          </p>
+        </div>
+        <div className={style.paragraphsaying}>
+          <p>
+            But even if you don't know us and you can't get to know us, <br />
+            you will get your paintings one hundred percent. <br />
+            We work with great suppliers who know how to handle paintings.<br />
           </p>
         </div>
       </div>

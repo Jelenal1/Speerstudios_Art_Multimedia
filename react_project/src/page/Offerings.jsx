@@ -29,6 +29,7 @@ export default function Offerings() {
 
   const style = {
     button: "text-xl bg-[#F18CED] h-fit rounded-lg w-24",
+    input: "border-2 rounded-lg",
   };
 
   return (
@@ -36,6 +37,14 @@ export default function Offerings() {
       <Navbar />
       <div className="flex flex-col min-h-screen items-center font-main">
         <h1 className="text-3xl">Offerings</h1>
+        <form className="flex flex-col mt-2">
+          <label htmlFor="title">Title</label>
+          <input type="text" name="title" className={style.input} />
+          <label htmlFor="price">Price</label>
+          <input type="number" name="price" step="10" className={style.input} />
+          <label htmlFor="image">Image</label>
+          <input type="file" name="image" className={style.input} />
+        </form>
         {offeringsdata.map((item) => {
           return (
             <div

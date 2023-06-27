@@ -2,6 +2,7 @@ import Landing from "./page/Landing";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Offerings from "./page/Offerings";
 import Navbar from "./components/Navbar";
+import Login from "./page/Login";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/offerings" element={<Offerings />} />
+        <Route path="/login" element={<Login />} />
         <Route
           path="/*"
           element={

@@ -127,7 +127,7 @@ export default function Offerings() {
                 {item.title}
               </h2>
               <Carousel
-                className=" border-2 md:w-[800px] w-full h-[604px] rounded-lg"
+                className=" border-2 md:w-[800px] w-full h-[604px] rounded-lg bg-gray-400"
                 prevArrow={({ handlePrev }) => (
                   <IconButton
                     variant="text"
@@ -160,7 +160,7 @@ export default function Offerings() {
                 })}
               </Carousel>
               <h2 className="text-2xl">{item.price + " CHF"}</h2>
-              <button className={style.button}>Buy</button>
+             {loggedIn ? <button className={style.button}>Buy</button> : null}
             </div>
           );
         })}

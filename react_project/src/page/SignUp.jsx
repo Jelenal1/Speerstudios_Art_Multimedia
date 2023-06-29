@@ -8,6 +8,9 @@ export default function SignUp() {
   const navigate = useNavigate();
   const signup = async (email, password) => {
     await createUserWithEmailAndPassword(auth, email, password);
+    if (auth.currentUser) {
+      navigate("/offerings");
+    }
   }
 
   return (

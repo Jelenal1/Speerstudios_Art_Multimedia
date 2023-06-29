@@ -8,6 +8,9 @@ export default function Login() {
   const navigate = useNavigate();
   const loggin = async (email, password) => {
   await signInWithEmailAndPassword(auth, email, password);
+  if (auth.currentUser) {
+    navigate("/offerings");
+  }
   };
 
   return (

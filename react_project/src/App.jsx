@@ -8,6 +8,7 @@ import Contact from "./page/Contact";
 import Imprint from "./page/Imprint";
 import Terms from "./page/Terms";
 import Privacy from "./page/Privacy";
+import SignUp from "./page/SignUp";
 
 function App() {
   return (

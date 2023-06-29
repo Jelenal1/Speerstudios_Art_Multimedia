@@ -12,10 +12,7 @@ export default function SignUp() {
     if (auth.currentUser) {
      await setDoc(doc(db, "users" , auth.currentUser.uid), {
         role: "user",
-        email: auth.currentUser.email,
-        uid: auth.currentUser.uid,
-        displayName: auth.currentUser.displayName,
-        photoURL: auth.currentUser.photoURL
+        uid: auth.currentUser.uid
      })
      navigate("/offerings");
     }

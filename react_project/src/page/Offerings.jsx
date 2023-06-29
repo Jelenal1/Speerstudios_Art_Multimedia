@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import { auth, db, storage } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs } from "firebase/firestore";
 import Image from "../components/Image.jsx";
 import { Carousel, IconButton } from "@material-tailwind/react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
@@ -12,6 +12,7 @@ import Footer from "../components/Footer.jsx";
 export default function Offerings() {
   const [offeringsdata, setOfferingsData] = useState([]);
   const [loggedIn, setLoggedIn] = useState();
+  const [userRole, setUserRole] = useState();
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -19,7 +20,12 @@ export default function Offerings() {
       return;
     }
     setLoggedIn(false);
+    setUserRole(getUserRole());
   });
+
+const getUserRole = async () => {
+ return await getDoc(doc(db, "users", auth.currentUser.uid))
+}
 
   const getOfferings = async () => {
     try {
@@ -82,7 +88,7 @@ export default function Offerings() {
       <Navbar />
       <div className={style.maincontainer}>
         <h1 className="text-3xl mt-2">Offerings</h1>
-        {loggedIn ? (
+        {loggedIn && userRole === "admin" ? (
           <>
             <button className={style.button} onClick={() => auth.signOut()}>
               Logout

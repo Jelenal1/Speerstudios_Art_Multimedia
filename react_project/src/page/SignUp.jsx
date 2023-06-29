@@ -14,7 +14,7 @@ export default function SignUp() {
     <>
       <Navbar />
       <div className="flex flex-col min-h-screen items-center font-main">
-        <h1 className="text-3xl">Sign Up</h1>
+        <h1 className="text-3xl mt-2">Sign Up</h1>
         <form
           className="flex flex-col mt-2 w-1/2"
           onSubmit={(e) => {

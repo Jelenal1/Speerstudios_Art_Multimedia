@@ -6,7 +6,7 @@ import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 function Navbar() {
   const style = {
     buttonLg: `mx-10 text-xl bg-[#F18CED] h-fit rounded-lg w-24 hidden lg:block`,
-    buttonSm: `text-xl bg-[#F18CED] h-fit rounded-lg w-24 block lg:hidden my-10`,
+    buttonSm: `text-xl bg-[#F18CED] h-fit rounded-lg w-24 block lg:hidden mt-12`,
     open: `flex flex-col items-center bg-gray-300 fixed top-0 right-0 w-32 h-full transition-all duration-300`,
     closed: `flex flex-col items-center bg-gray-300 fixed top-0 -right-20 w-32 h-full transition-all duration-300`,
 

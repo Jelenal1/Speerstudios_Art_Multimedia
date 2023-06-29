@@ -16,7 +16,7 @@ export default function Login() {
       <div className="flex flex-col min-h-screen items-center font-main">
         <h1 className="text-3xl mt-2">Login</h1>
         <form
-          className="flex flex-col mt-2"
+          className="flex flex-col mt-2 w-1/2"
           onSubmit={(e) => {
             e.preventDefault();
             loggin(e.target.email.value, e.target.password.value);
@@ -26,13 +26,13 @@ export default function Login() {
           <input
             type="email"
             name="email"
-            className="border-2 rounded-lg w-96 focus:outline focus:outline-2 focus:outline-[#F18CED]"
+            className="border-2 rounded-lg w-full focus:outline focus:outline-2 focus:outline-[#F18CED]"
           />
           <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
-            className="border-2 rounded-lg w-96 focus:outline focus:outline-2 focus:outline-[#F18CED]"
+            className="border-2 rounded-lg w-full focus:outline focus:outline-2 focus:outline-[#F18CED]"
           />
           <button type="submit">OK</button>
         </form>

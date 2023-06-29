@@ -11,7 +11,7 @@ export default function SignUp() {
     await createUserWithEmailAndPassword(auth, email, password);
     if (auth.currentUser) {
      await setDoc(doc(db, "users" , auth.currentUser.uid), {
-        role: "User",
+        role: "user",
         email: auth.currentUser.email,
         uid: auth.currentUser.uid,
         displayName: auth.currentUser.displayName,

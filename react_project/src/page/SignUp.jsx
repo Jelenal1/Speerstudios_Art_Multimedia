@@ -1,7 +1,8 @@
 import Navbar from "../components/Navbar";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function SignUp() {
 
@@ -9,7 +10,14 @@ export default function SignUp() {
   const signup = async (email, password) => {
     await createUserWithEmailAndPassword(auth, email, password);
     if (auth.currentUser) {
-      navigate("/offerings");
+     await setDoc(doc(db, "users" , auth.currentUser.uid), {
+        role: "User",
+        email: auth.currentUser.email,
+        uid: auth.currentUser.uid,
+        displayName: auth.currentUser.displayName,
+        photoURL: auth.currentUser.photoURL
+     })
+     navigate("/offerings");
     }
   }
 

@@ -12,7 +12,7 @@ export default function Terms() {
     <>
       <Navbar />
       <div className={style.maincontainer}>
-        <h1 className="text-3xl mt-2">Imprint</h1>
+        <h1 className="text-3xl mt-2">Terms of Service</h1>
         <div className={style.paragraphsaying}>
           <p>
             <strong>Introduction</strong> <br />

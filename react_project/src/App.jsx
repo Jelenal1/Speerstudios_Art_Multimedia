@@ -6,6 +6,7 @@ import Login from "./page/Login";
 import About from "./page/About";
 import Contact from "./page/Contact";
 import Imprint from "./page/Imprint";
+import Terms from "./page/Terms";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/imprint" element={<Imprint />} />
+        <Route path="/terms" element={<Terms />} />
         <Route
           path="/*"
           element={

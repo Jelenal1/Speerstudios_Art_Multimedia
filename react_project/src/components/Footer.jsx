@@ -8,21 +8,21 @@ function Footer() {
     <div className="bg-gray-300 flex flex-col items-center">
       <div className="flex items-center my-2">
         <img src={logo} className="h-10" />
-        <h1 className="text-3xl">SpeerStudios</h1>
+        <h1 className="text-3xl font-main">SpeerStudios</h1>
       </div>
-      <a href="" className={style.linkbutton}>
+      <a href="/contact" className={style.linkbutton}>
         Contact
       </a>
-      <a href="" className={style.linkbutton}>
+      <a href="/imprint" className={style.linkbutton}>
         Imprint
       </a>
-      <a href="" className={style.linkbutton}>
+      <a href="/terms" className={style.linkbutton}>
         Terms of Service
       </a>
-      <a href="" className={style.linkbutton}>
+      <a href="/privacy" className={style.linkbutton}>
         Privacy Policy
       </a>
-      <span className="my-2">© SpeerStudios Maintainde by Jelena Speer</span>
+      <span className="my-2">© SpeerStudios 2023 by Jelena Speer</span>
     </div>
   );
 }

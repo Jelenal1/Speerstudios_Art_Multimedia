@@ -1,10 +1,17 @@
 import Navbar from "../components/Navbar";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+
+  const naviate = useNavigate();
+
   const loggin = async (email, password) => {
     signInWithEmailAndPassword(auth, email, password);
+    if (auth.currentUser) {
+      naviate("/offerings");
+    }
   };
 
   return (

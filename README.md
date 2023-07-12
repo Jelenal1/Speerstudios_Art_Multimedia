@@ -24,7 +24,3 @@ To install and run the project locally, please follow these steps:
 ## Disclaimer
 
 This project is purely fictional and was created as part of a school project. The SpeerStudios collective, its management, and the address in Lugano, Switzerland, are entirely fictional. Any resemblance to real entities, living or dead, or actual events is purely coincidental.
-
----
-
-This README file can serve as a starting point for your project. You can further customize it and add more details such as testing instructions, information about the code structure, licenses, contributors, etc.

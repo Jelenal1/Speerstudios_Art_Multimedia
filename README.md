@@ -18,8 +18,8 @@ This project utilizes the following technologies:
 To install and run the project locally, please follow these steps:
 
 1. Clone the repository to your local machine.
-2. Install the necessary dependencies using `npm install`.
-3. Start the project using `npm start`.
+2. Install the necessary dependencies using `yarn install`.
+3. Start the project using `yarn dev`.
 
 ## Disclaimer
 
